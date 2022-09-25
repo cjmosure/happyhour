@@ -6,6 +6,8 @@ import {
   Param,
   Post,
   Put,
+  Request,
+  Response,
 } from '@nestjs/common';
 import { CreateQuestionDto } from './dto/create-question.dto';
 import { UpdateQuestionDto } from './dto/update-question.dto';
@@ -25,6 +27,24 @@ export class QuestionsController {
   @Get(':id')
   async find(@Param('id') id: string) {
     return await this.service.findOne(id);
+  }
+
+  @Put(':id/dislike')
+  async dislike(
+    @Param('id') id: string,
+    @Request() req,
+    @Response() res,
+  ) {
+    const hhidValue = req.cookies.hhid ? req.cookies.hhid : undefined;
+    const response = await this.service.dislike(id, hhidValue);
+    res.cookie('hhid', response.uuid, {
+      // expires: new Date(new Date().getTime() + 30 * 1000),
+      maxAge: 90000000,
+      httpOnly: true,
+      domain: '.happyhour.local',
+    });
+
+    return res.send(response.question);
   }
 
   @Post()

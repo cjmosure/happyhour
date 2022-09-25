@@ -3,7 +3,9 @@ import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { CreateQuestionDto } from './dto/create-question.dto';
 import { UpdateQuestionDto } from './dto/update-question.dto';
+import { DislikeQuestionDto } from './dto/dislike-question.dto';
 import { Question, QuestionDocument } from './schemas/question.schema';
+import { v4 as uuidv4 } from 'uuid';
 
 @Injectable()
 export class QuestionService {
@@ -17,6 +19,24 @@ export class QuestionService {
 
   async findOne(id: string): Promise<Question> {
     return await this.model.findById(id).exec();
+  }
+
+  async dislike(id: string, hhid?: string): Promise<DislikeQuestionDto> {
+    if (hhid) {
+      const foundDoc = await this.model.findById(id, {dislikes: hhid});
+      return {
+        uuid: hhid,
+        question: foundDoc,
+      }
+    }
+    const userIdentifier = uuidv4();
+    const question  = await this.model.findByIdAndUpdate(id, {
+      $push: { 'dislikes': userIdentifier }
+    }).exec();
+    return {
+      uuid: userIdentifier,
+      question,
+    }
   }
 
   async getRandom(): Promise<Question> {

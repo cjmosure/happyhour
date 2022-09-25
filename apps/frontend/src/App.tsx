@@ -35,6 +35,18 @@ function App() {
     }
   }, [setQuestion]);
 
+  const dislikeQuestion = useCallback(async () => {
+    try {
+      await fetch(`http://localhost:4000/questions/${question?._id}/dislike`, {
+        method: 'PUT',
+        credentials: 'same-origin',
+      });
+      getQuestion();
+    } catch (error) {
+      console.error(error);
+    }
+  }, [question, getQuestion]);
+
   useEffect(() => {
     getQuestion();
   }, []);
@@ -43,7 +55,7 @@ function App() {
     <AppWrapper>
       <h3>{question && question.title}</h3>
       <NewQuestionButton onClick={getQuestion}>New Question</NewQuestionButton>
-      <DumbQuestionButton>This Question is Dumb</DumbQuestionButton>
+      <DumbQuestionButton onClick={dislikeQuestion}>This Question is Dumb</DumbQuestionButton>
     </AppWrapper>
   );
 }

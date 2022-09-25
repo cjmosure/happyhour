@@ -16,6 +16,9 @@ export class Question {
 
   @Prop()
   deletedAt?: Date;
+
+  @Prop([String])
+  dislikes: string[];
 }
 
 export const QuestionSchema = SchemaFactory.createForClass(Question);
