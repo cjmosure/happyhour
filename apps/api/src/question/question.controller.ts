@@ -39,9 +39,10 @@ export class QuestionsController {
     const response = await this.service.dislike(id, hhidValue);
     res.cookie('hhid', response.uuid, {
       // expires: new Date(new Date().getTime() + 30 * 1000),
+      // domain: '.happyhour.local',
       maxAge: 90000000,
       httpOnly: true,
-      domain: '.happyhour.local',
+      sameSite: 'Lax',
     });
 
     return res.send(response.question);

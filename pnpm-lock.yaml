@@ -17,6 +17,7 @@ importers:
       '@nestjs/mongoose': ^9.2.0
       '@nestjs/platform-express': ^9.1.2
       '@nestjs/schematics': ^9.0.3
+      '@nestjs/serve-static': ^3.0.0
       '@nestjs/testing': ^9.1.2
       '@types/cookie-parser': ^1.4.3
       '@types/express': ^4.17.14
@@ -53,6 +54,7 @@ importers:
       '@nestjs/core': 9.1.2_foclggtudvr6cnfc5hz7ukfode
       '@nestjs/mongoose': 9.2.0_qssjtigi3b2vc3i64r5qfnyz4y
       '@nestjs/platform-express': 9.1.2_umdjpi6fqr4wvw73r3mhthbyle
+      '@nestjs/serve-static': 3.0.0_umdjpi6fqr4wvw73r3mhthbyle
       cookie-parser: 1.4.6
       dotenv: 16.0.2
       mongoose: 6.6.1
@@ -91,6 +93,7 @@ importers:
     specifiers:
       '@emotion/react': ^11.10.4
       '@emotion/styled': ^11.10.4
+      '@picocss/pico': ^1.5.5
       '@testing-library/jest-dom': ^5.16.5
       '@testing-library/react': ^13.4.0
       '@testing-library/user-event': ^13.5.0
@@ -101,11 +104,13 @@ importers:
       react: ^18.2.0
       react-dom: ^18.2.0
       react-scripts: 5.0.1
+      react-swipeable: ^7.0.0
       typescript: ^4.8.3
       web-vitals: ^2.1.4
     dependencies:
       '@emotion/react': 11.10.4_msyv5sllghxdhcqrv627wahqgi
       '@emotion/styled': 11.10.4_3hd6nwy3r2wumq5zfueojfsowa
+      '@picocss/pico': 1.5.5
       '@testing-library/react': 13.4.0_biqbaboplfbrettd7655fr4n2y
       '@testing-library/user-event': 13.5.0_znccgeejomvff3jrsk3ljovfpu
       '@types/jest': 27.5.2
@@ -115,6 +120,7 @@ importers:
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
       react-scripts: 5.0.1_qkk2h7iyrlo4uzewmb6meqitne
+      react-swipeable: 7.0.0_react@18.2.0
       typescript: 4.8.3
       web-vitals: 2.1.4
     devDependencies:
@@ -2546,6 +2552,17 @@ packages:
       - chokidar
     dev: true
 
+  /@nestjs/serve-static/3.0.0_umdjpi6fqr4wvw73r3mhthbyle:
+    resolution: {integrity: sha512-TpXjgs4136dQqWUjEcONqppqXDsrJhRkmKWzuBMOUAnP4HjHpNmlycvkHnDnWSoG2YD4a7Enh4ViYGWqCfHStA==}
+    peerDependencies:
+      '@nestjs/common': ^9.0.0
+      '@nestjs/core': ^9.0.0
+    dependencies:
+      '@nestjs/common': 9.1.2_j5hagqx4mwzscud4kyjdvubauy
+      '@nestjs/core': 9.1.2_foclggtudvr6cnfc5hz7ukfode
+      path-to-regexp: 0.2.5
+    dev: false
+
   /@nestjs/testing/9.1.2_j2ls57gnkuuvs6xhnfklmsn2o4:
     resolution: {integrity: sha512-BfwERdTppE4oz6qxCNJVo0kaRH2FO7mipooedT2nDtYW3krGZ8978odmGdpVgNz1xwqKDH3Y/68frs5oW2CTZw==}
     peerDependencies:
@@ -2599,6 +2616,10 @@ packages:
       node-fetch: 2.6.7
     transitivePeerDependencies:
       - encoding
+
+  /@picocss/pico/1.5.5:
+    resolution: {integrity: sha512-AQSMeeZrk+gAF3JLe0jaQRESGWD+kH2bGMPyuoTniOjxt2MlFnLW4q6Eog9QMelKTDGO6WR0tuTSk92SK9+Ctg==}
+    dev: false
 
   /@pmmmwh/react-refresh-webpack-plugin/0.5.7_prxwy2zxcolvdag5hfkyuqbcze:
     resolution: {integrity: sha512-bcKCAzF0DV2IIROp9ZHkRJa6O4jy7NlnHdWL3GmcUxYWNjLXkK5kfELELwEfSP5hXPfVL/qOGMAROuMQb9GG8Q==}
@@ -8498,6 +8519,10 @@ packages:
   /path-to-regexp/0.1.7:
     resolution: {integrity: sha512-5DFkuoqlv1uYQKxy8omFBeJPQcdoE07Kv2sferDCrAq1ohOU+MSDswDIbnx3YAM60qIOnYa53wBhXW0EbMonrQ==}
 
+  /path-to-regexp/0.2.5:
+    resolution: {integrity: sha512-l6qtdDPIkmAmzEO6egquYDfqQGPMRNGjYtrU13HAXb3YSRrt7HSb1sJY0pKp6o2bAa86tSB6iwaW2JbthPKr7Q==}
+    dev: false
+
   /path-to-regexp/3.2.0:
     resolution: {integrity: sha512-jczvQbCUS7XmS7o+y1aEO9OBVFeZBQ1MDSEqmO7xSoPgOPoowY/SxLpZ6Vh97/8qHZOteiCKb7gkG9gA2ZUxJA==}
 
@@ -9670,6 +9695,14 @@ packages:
       - webpack-cli
       - webpack-hot-middleware
       - webpack-plugin-serve
+    dev: false
+
+  /react-swipeable/7.0.0_react@18.2.0:
+    resolution: {integrity: sha512-NI7KGfQ6gwNFN0Hor3vytYW3iRfMMaivGEuxcADOOfBCx/kqwXE8IfHFxEcxSUkxCYf38COLKYd9EMYZghqaUA==}
+    peerDependencies:
+      react: ^16.8.3 || ^17 || ^18
+    dependencies:
+      react: 18.2.0
     dev: false
 
   /react/18.2.0:
