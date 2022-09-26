@@ -1,6 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import styled from '@emotion/styled';
-import '@picocss/pico/css/pico.min.css';
 import './App.css';
 import { useSwipeable } from 'react-swipeable';
 
@@ -16,6 +15,9 @@ const AppWrapper = styled.div`
   flex-direction: column;
   padding: 1rem;
   flex-grow: 1;
+  font-family: ui-sans-serif,-apple-system,BlinkMacSystemFont,Roboto,"Helvetica Neue",Helvetica,Inter,Arial,"Noto Sans",sans-serif;
+  background: #0d0e0f;
+  color: #d9d6d1;
 `;
 
 const QuestionWrapper = styled.div`
@@ -31,11 +33,26 @@ const QuestionText = styled.h3`
   font-size: 2.5rem;
 `;
 
-const NewQuestionButton = styled.button`
+const Button = styled.button`
+  padding: 1rem;
+  border: none;
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+  border-radius: 3px;
+  font-weight: bold;
+  &:hover {
+    cursor: pointer;
+  }
+`
 
+const NewQuestionButton = styled(Button)`
+  background: #0074D9;
+  color: #FFF;
 `;
 
-const DumbQuestionButton = styled.button`
+const DumbQuestionButton = styled(Button)`
+  background: #FF4136;
+  color: #FFF;
   margin: 0;
 `;
 
@@ -79,7 +96,6 @@ function App() {
     }
   }, [setQuestion, questions, question]);
 
-
   const swipeHandlers = useSwipeable({
     onSwipedLeft: getQuestion,
     onSwipedRight: showPreviousQuestion,
@@ -87,7 +103,6 @@ function App() {
     preventScrollOnSwipe: true,
     trackMouse: true
   });
-
 
   return (
     <AppWrapper {...swipeHandlers}>
