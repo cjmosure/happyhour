@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start:api": "pnpm --filter hhapi start",
-    "start:frontend": "pnpm --filter hhfrontend start"
+    "start:frontend": "pnpm --filter hhfrontend start",
+    "build:frontend": "pnpm --filter hhfrontend build"
   },
   "repository": {
     "type": "git",
