@@ -14,7 +14,14 @@ export class QuestionService {
   ) {}
 
   async findAll(): Promise<Question[]> {
-    return await this.model.find().exec();
+    return await this.model.aggregate([
+      {
+          $addFields: { dislike_count: {$size: { "$ifNull": [ "$dislikes", [] ] } } }
+      },
+      {
+          $sort: { 'dislike_count':1, 'createdAt': 1 }
+      }
+  ])
   }
 
   async findOne(id: string): Promise<Question> {
